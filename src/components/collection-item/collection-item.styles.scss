@@ -1,0 +1,33 @@
+.collection-item {
+  // background-color: yellow;
+  width: 22%;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image {
+  width: 100%;
+  height: 95%;
+  background-size: cover;
+  background-position: center;
+}
+
+.collection-footer { 
+  // background-color: yellowgreen;
+  height: 5%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+
+  .name {
+    width: 90%;
+    margin-bottom: 15px;
+  }
+
+  .price {
+    width: 10%;
+  }
+}
