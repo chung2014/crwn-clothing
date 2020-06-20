@@ -9,6 +9,7 @@ import CartIcon from "../cart-icon/cart-icon.components";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 
 import "./header.styles.scss";
+import CartDropDown from "../cart-dropdown/cart-dropdown.component";
 
 const Header = ({ currentUser }) => {
   return (
@@ -40,6 +41,7 @@ const Header = ({ currentUser }) => {
 
         <CartIcon />
       </div>
+      <CartDropDown />
     </div>
   );
 };
