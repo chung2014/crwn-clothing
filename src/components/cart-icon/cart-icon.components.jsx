@@ -8,11 +8,6 @@ import { ReactComponent as ShoppingIcon } from "../../assets/shopping-bag.svg";
 import "./cart-icon.styles.scss";
 import { connect } from "react-redux";
 
-function getItemCount(state) {
-  console.log("getItemCount");
-  return state.cart.cartItems.reduce((acc, val) => acc + val.quantity, 0);
-}
-
 const CartIcon = ({ toggleCartHidden, itemCount }) => {
   console.log("[CartIcon] render");
   return (
