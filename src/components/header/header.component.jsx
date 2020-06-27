@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 // import { createStructuredSelector } from "reselect";
 
@@ -12,47 +11,50 @@ import CartIcon from "../cart-icon/cart-icon.component";
 
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 
-import "./header.styles.scss";
 import CartDropDown from "../cart-dropdown/cart-dropdown.component";
+
+import {
+  HeaderContainer,
+  LogoContainer,
+  OptionsContainer,
+  OptionLink
+} from "./header.styles";
 
 const Header = ({ currentUser, hidden }) => {
   return (
-    <div className="header">
+    <HeaderContainer>
       {/* <div>
         <div>hello world</div>
         <div ref={myRef}>hello world 2222</div>
       </div> */}
 
-      <Link className="logo-container" to="/">
+      <LogoContainer to="/">
         <Logo className="logo" />
-      </Link>
-      <div className="options">
-        <Link className="option" to="/shop">
-          SHOP
-        </Link>
-        <Link className="option" to="/shop">
-          CONTACT
-        </Link>
+      </LogoContainer>
+      <OptionsContainer>
+        <OptionLink to="/shop">SHOP</OptionLink>
+        <OptionLink to="/shop">CONTACT</OptionLink>
         {currentUser ? (
-          <div className="option" onClick={() => auth.signOut()}>
+          // <OptionDiv onClick={() => auth.signOut()}>
+          // <span>SIGN OUT</span>
+          // </OptionDiv>
+          <OptionLink as="div" onClick={() => auth.signOut()}>
             SIGN OUT
-          </div>
+          </OptionLink>
         ) : (
-          <Link className="option" to="/signin">
-            Sign In
-          </Link>
+          <OptionLink to="/signin">Sign In</OptionLink>
         )}
         <CartIcon />
-      </div>
+      </OptionsContainer>
       {hidden ? null : <CartDropDown />}
-    </div>
+    </HeaderContainer>
   );
 };
 
 const mapStateToProps = (state) => {
   return {
     currentUser: selectCurrentUser(state),
-    hidden: selectCartHidden(state),
+    hidden: selectCartHidden(state)
   };
 };
 
