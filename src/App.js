@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.actions";
 
+import { selectCurrentUser } from "./redux/user/user.selectors";
+
 import "./App.css";
 
 import HomePage from "./pages/homepage/homepage.component";
@@ -31,7 +33,7 @@ class App extends React.Component {
           // console.log(snapshot.data());
           setCurrentUser({
             id: snapshot.id,
-            ...snapshot.data(),
+            ...snapshot.data()
           });
         });
       } else {
@@ -67,14 +69,21 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = ({ user }) => {
+// const mapStateToProps = ({ user }) => {
+//   return {
+//     currentUser: user.currentUser
+//   };
+// };
+
+const mapStateToProps = (state) => {
   return {
-    currentUser: user.currentUser,
+    currentUser: selectCurrentUser(state)
   };
 };
+
 const mapDispatchToProps = (dispatch) => {
   return {
-    setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+    setCurrentUser: (user) => dispatch(setCurrentUser(user))
   };
 };
 
