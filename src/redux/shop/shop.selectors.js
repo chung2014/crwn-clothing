@@ -9,12 +9,14 @@ export const selectShopCollections = createSelector([selectShop], (shop) => {
 export const selectCollectionForPreview = createSelector(
   [selectShopCollections],
   (collections) => {
-    return Object.keys(collections).map((key) => collections[key]);
+    return collections
+      ? Object.keys(collections).map((key) => collections[key])
+      : [];
   }
 );
 
 export const selectCollection = (collectionUrlParam) => {
   return createSelector([selectShopCollections], (collections) => {
-    return collections[collectionUrlParam];
+    return collections ? collections[collectionUrlParam] : null;
   });
 };

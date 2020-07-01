@@ -11,6 +11,9 @@ const CollectionPage = (props) => {
   const { match, collection } = props;
   console.log(match);
   console.log(props);
+  if (!collection) {
+    return null;
+  }
   const { title, items } = collection;
   return (
     <div className="collection-page">
